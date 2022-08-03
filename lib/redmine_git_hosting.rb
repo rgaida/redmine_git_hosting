@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+# Redmine Hooks
+require 'redmine_git_hosting/hooks'
+
 # Redmine SCM
 Redmine::Scm::Base.add 'Xitolite'
 
@@ -9,6 +12,7 @@ module RedmineGitHosting
   VERSION = '5.0.1-master'
 
   # Load RedminePluginLoader
+  require 'redmine_git_hosting/redmine_plugin_loader'
   extend RedminePluginLoader
 
   set_plugin_name       'redmine_git_hosting'
@@ -65,5 +69,5 @@ Rails.configuration.to_prepare do
   # Redmine SCM adapter
   require_dependency 'redmine/scm/adapters/xitolite_adapter'
 
-  require 'hrack/init'
+  require 'hrack/bundle'
 end
